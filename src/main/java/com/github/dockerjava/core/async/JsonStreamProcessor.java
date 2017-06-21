@@ -44,7 +44,7 @@ public class JsonStreamProcessor<T> implements ResponseStreamProcessor<T> {
                 try {
                     ObjectNode objectNode = OBJECT_MAPPER.readTree(jp);
                     // exclude empty item serialization into class #461
-                    if (!objectNode.isEmpty(null)) {
+                     if (objectNode != null) {
                         T next = OBJECT_MAPPER.treeToValue(objectNode, clazz);
                         resultCallback.onNext(next);
                     }
